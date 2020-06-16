@@ -1,7 +1,7 @@
 import numpy as np
 from scipy.stats import chi2
 import matplotlib.pyplot as plt
-from parameters import *
+from energy_detector.parameters import *
 
 
 def generate_statistic_H0(NUM_STATISTICS, sigma_w, N):
