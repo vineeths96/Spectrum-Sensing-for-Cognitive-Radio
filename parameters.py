@@ -1,0 +1,16 @@
+sigma_s = 1
+N_d = 32
+N_c = 8
+K = 50
+P_FA = 0.05
+
+SNR = 10
+SNR_LOW = -20
+SNR_UP = 6
+SNR_STEP = 2
+SNR_NOISE = 1
+
+P_H1 = 0.2
+
+NUM_STATISTICS = 1000
+#NUM_STATISTICS = 100000
