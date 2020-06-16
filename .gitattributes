@@ -1,0 +1,5 @@
+*.tex linguist-detectable=false
+*.aux linguist-detectable=false
+*.log linguist-detectable=false
+*.out linguist-detectable=false
+*.py linguist-detectable=true
