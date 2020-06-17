@@ -20,7 +20,7 @@ def generate_statistic_H1(NUM_STATISTICS, sigma_w, N):
     T_y = np.zeros(NUM_STATISTICS)
 
     for ind in range(NUM_STATISTICS):
-        x = sigma_s * np.random.randn(N)
+        x = sigma_s * np.random.randn(N, 1)
         w = sigma_w * np.random.randn(N, 2).view(np.complex128)
 
         y = x + w
