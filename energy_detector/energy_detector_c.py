@@ -4,31 +4,6 @@ import matplotlib.pyplot as plt
 from energy_detector.parameters import *
 
 
-def generate_statistic_H0(NUM_STATISTICS, sigma_w, N):
-    T_y = np.zeros(NUM_STATISTICS)
-
-    for ind in range(NUM_STATISTICS):
-        w = sigma_w * np.random.randn(N)
-
-        y = w
-        T_y[ind] = np.sum(np.square(y))
-
-    return T_y
-
-
-def generate_statistic_H1(NUM_STATISTICS, sigma_w, N):
-    T_y = np.zeros(NUM_STATISTICS)
-
-    for ind in range(NUM_STATISTICS):
-        x = sigma_s * np.random.randn(N)
-        w = sigma_w * np.random.randn(N)
-
-        y = x + w
-        T_y[ind] = np.sum(np.square(y))
-
-    return T_y
-
-
 def main():
     SNR_list = np.arange(SNR_LOW, SNR_UP, SNR_STEP)
     N = (K + 1) * (N_c + N_d)

@@ -1,17 +1,17 @@
 import numpy as np
 from scipy.stats import chi2
 import matplotlib.pyplot as plt
-from energy_detector.parameters import *
+from cyclostationary_detector.parameters import *
 
 
 def generate_statistic_H0(NUM_STATISTICS, sigma_w, N):
     T_y = np.zeros(NUM_STATISTICS)
 
     for ind in range(NUM_STATISTICS):
-        w = sigma_w * np.random.randn(N)
+        w = sigma_w * np.random.randn(N, 2).view(np.complex128)
 
         y = w
-        T_y[ind] = np.sum(np.square(y))
+        T_y[ind] = np.sum(np.square(np.abs(y)))
 
     return T_y
 
@@ -21,10 +21,10 @@ def generate_statistic_H1(NUM_STATISTICS, sigma_w, N):
 
     for ind in range(NUM_STATISTICS):
         x = sigma_s * np.random.randn(N)
-        w = sigma_w * np.random.randn(N)
+        w = sigma_w * np.random.randn(N, 2).view(np.complex128)
 
         y = x + w
-        T_y[ind] = np.sum(np.square(y))
+        T_y[ind] = np.sum(np.square(np.abs(y)))
 
     return T_y
 
@@ -57,8 +57,8 @@ def main():
             if T >= gamma:
                 NUM_DETECTION += 1
 
-        P_FA_CALC[ind] =  NUM_FALSE_ALARM/NUM_STATISTICS
-        P_D_CALC[ind] = NUM_DETECTION/NUM_STATISTICS
+        P_FA_CALC[ind] =  NUM_FALSE_ALARM / NUM_STATISTICS
+        P_D_CALC[ind] = NUM_DETECTION / NUM_STATISTICS
 
         P_FA_THEO[ind] = P_FA
         P_D_THEO[ind] = chi2.sf(x=gamma / (sigma_s ** 2 + sigma_w ** 2), df=N)
