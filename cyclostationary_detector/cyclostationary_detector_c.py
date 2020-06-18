@@ -5,6 +5,14 @@ from cyclostationary_detector.parameters import *
 
 
 def generate_statistic_H0(NUM_STATISTICS, sigma_w, N):
+    """
+    Generate H0 test statistics
+    :param NUM_STATISTICS: Number of statistics to be produced
+    :param sigma_w: Std deviation of noise
+    :param N: Length of observation vector
+    :return: H0 test statistics
+    """
+
     T_y = np.zeros(NUM_STATISTICS, dtype=np.complex)
 
     for ind in range(NUM_STATISTICS):
@@ -12,6 +20,7 @@ def generate_statistic_H0(NUM_STATISTICS, sigma_w, N):
 
         y = w
 
+        # Calculate test statistic
         val = np.complex(0)
         for n in range(N_c):
             for k in range(K):
@@ -23,6 +32,14 @@ def generate_statistic_H0(NUM_STATISTICS, sigma_w, N):
 
 
 def generate_statistic_H1(NUM_STATISTICS, sigma_w, N):
+    """
+    Generate H1 test statistics
+    :param NUM_STATISTICS: Number of statistics to be produced
+    :param sigma_w: Std deviation of noise
+    :param N: Length of observation vector
+    :return: H1 test statistics
+    """
+
     T_y = np.zeros(NUM_STATISTICS, dtype=np.complex)
 
     for ind in range(NUM_STATISTICS):
@@ -34,6 +51,7 @@ def generate_statistic_H1(NUM_STATISTICS, sigma_w, N):
 
         y = x + w
 
+        # Calculate test statistic
         val = np.complex(0)
         for n in range(N_c):
             for k in range(K):
@@ -45,6 +63,7 @@ def generate_statistic_H1(NUM_STATISTICS, sigma_w, N):
 
 
 def main():
+    # Define the SNR where performance has to be evaluated
     SNR_list = np.arange(SNR_LOW, SNR_UP, SNR_STEP)
     N = (K + 1) * (N_c + N_d)
 
@@ -53,6 +72,7 @@ def main():
     P_FA_CALC = np.zeros(len(SNR_list))
     P_D_CALC = np.zeros(len(SNR_list))
 
+    # Evaluate the performance on H0 and H1
     for ind, SNR in enumerate(SNR_list):
         NUM_FALSE_ALARM = 0
         NUM_DETECTION = 0
@@ -77,6 +97,7 @@ def main():
 
         P_FA_THEO[ind] = P_FA
 
+    # Plot and save the results
     plt.figure()
     plt.plot(SNR_list, P_FA_CALC, label="Calculated $P_{FA}$")
     plt.plot(SNR_list, P_D_CALC, label="Calculated $P_{D}$")

@@ -4,6 +4,14 @@ from cyclostationary_detector.parameters import *
 
 
 def generate_statistic_H0(NUM_STATISTICS, sigma_w, N):
+    """
+    Generate H0 test statistics
+    :param NUM_STATISTICS: Number of statistics to be produced
+    :param sigma_w: Std deviation of noise
+    :param N: Length of observation vector
+    :return: H0 test statistics
+    """
+
     T_y = np.zeros(NUM_STATISTICS, dtype=np.complex)
 
     for ind in range(NUM_STATISTICS):
@@ -11,6 +19,7 @@ def generate_statistic_H0(NUM_STATISTICS, sigma_w, N):
 
         y = w
 
+        # Calculate test statistic
         val = np.complex(0)
         for n in range(N_c):
             for k in range(K):
@@ -22,6 +31,14 @@ def generate_statistic_H0(NUM_STATISTICS, sigma_w, N):
 
 
 def generate_statistic_H1(NUM_STATISTICS, sigma_w, N):
+    """
+    Generate H1 test statistics
+    :param NUM_STATISTICS: Number of statistics to be produced
+    :param sigma_w: Std deviation of noise
+    :param N: Length of observation vector
+    :return: H1 test statistics
+    """
+
     T_y = np.zeros(NUM_STATISTICS, dtype=np.complex)
 
     for ind in range(NUM_STATISTICS):
@@ -33,6 +50,7 @@ def generate_statistic_H1(NUM_STATISTICS, sigma_w, N):
 
         y = x + w
 
+        # Calculate test statistic
         val = np.complex(0)
         for n in range(N_c):
             for k in range(K):
@@ -50,6 +68,7 @@ def main():
     T_y_0 = generate_statistic_H0(NUM_STATISTICS, sigma_w, N)
     T_y_1 = generate_statistic_H1(NUM_STATISTICS, sigma_w, N)
 
+    # Plot and save the results
     plt.figure()
     plt.subplot(211)
     plt.hist(np.real(T_y_0), bins=125)
