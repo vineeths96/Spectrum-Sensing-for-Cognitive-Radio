@@ -29,7 +29,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-This project deals with developing an energy detector and a detector based on cyclostationarity for an OFDM based cognitive radio system and (b) implementing and evaluating the performance of these detectors. The concept of cognitive radio is to exploit the underutilized spectral resources by reusing unused spectrum in an opportunistic manner. A cognitive radio system generally involves primary users of the spectrum, who are incumbent licensees, and secondary users who seek to opportunistically use the spectrum when the primary users are idle. The cognitive radios must sense the spectrum to detect whether it is available or not.
+This project deals with developing an energy detector and a detector based on cyclostationarity for an OFDM based cognitive radio system and implementing and evaluating the performance of these detectors. The concept of cognitive radio is to exploit the underutilized spectral resources by reusing unused spectrum in an opportunistic manner. A cognitive radio system generally involves primary users of the spectrum, who are incumbent licensees, and secondary users who seek to opportunistically use the spectrum when the primary users are idle. The cognitive radios must sense the spectrum to detect whether it is available or not.
 
 We derive, implement and evaluate the energy detector and the cyclostationary detector. We evaluate the performance of the detectors by plotting the Receiver Operating Characteristics (ROC) under clean and noisy conditions.
 
